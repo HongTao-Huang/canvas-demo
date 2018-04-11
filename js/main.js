@@ -1,44 +1,77 @@
-//   获取id元素  画布对象
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 window.onload = function () {
     autoSetCanvasSize(canvas);
-    listenToMouse(canvas);
+    listenToUser(canvas);
 }
 
-function listenToMouse(canvas){
+function listenToUser(canvas){
     var painting = false;
     var lastPoint = [];
-    canvas.onmousedown = function(aa){
-        var x = aa.clientX;
-        var y = aa.clientY;
-        painting = true;
-        if(usingEraser){
-            context.clearRect(x-5,y-5,10,10);
-        } else {
-            lastPoint[0] = x;
-            lastPoint[1] = y;
-            drawCircle(x , y , 1);
-        }
-    }
-
-    canvas.onmousemove = function(aa){
-        var x = aa.clientX;
-        var y = aa.clientY;
-        if(!painting){return;}
-        if(painting){
+    if(document.body.ontouchstart !== undefined){
+        canvas.ontouchstart = function(aa){
+            var x = aa.touches[0].clientX;
+            var y = aa.touches[0].clientY;
+            painting = true;
             if(usingEraser){
                 context.clearRect(x-5,y-5,10,10);
             } else {
-                drawLine(lastPoint[0], lastPoint[1], x , y);
                 lastPoint[0] = x;
                 lastPoint[1] = y;
+                drawCircle(x , y , 1);
             }
         }
-    }
 
-    canvas.onmouseup = function(){
-        painting = false;
+        canvas.ontouchmove = function(aa){
+            var x = aa.touches[0].clientX;
+            var y = aa.touches[0].clientY;
+            if(!painting){return;}
+            if(painting){
+                if(usingEraser){
+                    context.clearRect(x-5,y-5,10,10);
+                } else {
+                    drawLine(lastPoint[0], lastPoint[1], x , y);
+                    lastPoint[0] = x;
+                    lastPoint[1] = y;
+                }
+            }
+        }
+
+        canvas.ontouchend = function(){
+            painting = false;
+        }
+    }else {
+        canvas.onmousedown = function(aa){
+            var x = aa.clientX;
+            var y = aa.clientY;
+            painting = true;
+            if(usingEraser){
+                context.clearRect(x-5,y-5,10,10);
+            } else {
+                lastPoint[0] = x;
+                lastPoint[1] = y;
+                drawCircle(x , y , 1);
+            }
+        }
+
+        canvas.onmousemove = function(aa){
+            var x = aa.clientX;
+            var y = aa.clientY;
+            if(!painting){return;}
+            if(painting){
+                if(usingEraser){
+                    context.clearRect(x-5,y-5,10,10);
+                } else {
+                    drawLine(lastPoint[0], lastPoint[1], x , y);
+                    lastPoint[0] = x;
+                    lastPoint[1] = y;
+                }
+            }
+        }
+
+        canvas.onmouseup = function(){
+            painting = false;
+        }
     }
     // 橡皮擦
 
