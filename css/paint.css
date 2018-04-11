@@ -23,6 +23,7 @@ body{
     position: fixed;
     top: 12px;
     left: 10px;
+    cursor:pointer;
 }
 
 .actions svg{
@@ -81,6 +82,7 @@ body{
     top: 12px;
     right: 20px;
     padding: 10px;
+    cursor:pointer;
 }
 
 .sizes > li{
