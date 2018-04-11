@@ -1,11 +1,18 @@
 #canvas{
     display:block;
     background-color: #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 *{
     margin:0;
     padding: 0;
+}
+
+ul , ol {
+    list-style: none;
 }
 
 body{
@@ -31,10 +38,9 @@ body{
 }
 
 .colors{
-    list-style: none;
     position: fixed;
-    top:50px;
-    left:18px;
+    top: 50px;
+    left: 18px;
 }
 
 .colors >li {
@@ -63,7 +69,30 @@ body{
     background-color: green;
 }
 
-.colors >li.active{
+.colors >li.active ,
+.sizes >li.active
+{
     box-shadow: 2px 1px 5px rgba(0 , 0 , 0 , 0.9);
     transform: scale(1.2);
+}
+
+.sizes{
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    padding: 10px;
+}
+
+.sizes > li{
+    height: 0;
+    width: 50px;
+}
+
+.sizes > .thin{
+    border-top:2px solid black;
+    margin-bottom: 20px;
+}
+
+.sizes > .thick{
+    border-top:5px solid black;
 }

@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+var lineWidth = 2;
 window.onload = function () {
     autoSetCanvasSize(canvas);
     listenToUser(canvas);
@@ -118,6 +119,35 @@ function listenToUser(canvas){
         green.classList.remove('active');
         black.classList.remove('active');
     }
+
+    /**********/
+    thin.onclick = function () {
+        lineWidth = 2;
+        thin.classList.add('active');
+        thick.classList.remove('active');
+    }
+
+    thick.onclick = function () {
+        lineWidth = 5;
+        thin.classList.remove('active');
+        thick.classList.add('active');
+    }
+
+    /**************/
+    clear.onclick = function () {
+        context.clearRect(0 , 0 , document.documentElement.clientWidth , document.documentElement.clientHeight);
+    }
+
+    /*********/
+    save.onclick = function () {
+        var url = canvas.toDataURL("image/png");
+        var a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = url;
+        a.target = '_blank';
+        a.download = 'image';
+        a.click();
+    }
 }
 
 /************/
@@ -130,7 +160,7 @@ function drawCircle(x,y,radius){
 function drawLine(x1, y1, x2, y2){
     context.beginPath();
     context.moveTo(x1 , y1);
-    context.lineWidth = 5;
+    context.lineWidth = lineWidth;
     context.lineTo(x2 , y2);
     context.stroke();
     context.closePath();
