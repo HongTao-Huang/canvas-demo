@@ -88,13 +88,13 @@ body{
 .sizes > li{
     height: 0;
     width: 50px;
+    margin: 20px 0;
 }
 
 .sizes > .thin{
-    border-top:2px solid black;
-    margin-bottom: 20px;
+    border-top:3px solid black;
 }
 
 .sizes > .thick{
-    border-top:5px solid black;
+    border-top:6px solid black;
 }
