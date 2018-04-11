@@ -3,24 +3,67 @@
     background-color: #ddd;
 }
 
-body{
+*{
     margin:0;
+    padding: 0;
+}
+
+body{
+    overflow: hidden;
 }
 
 .actions{
     position: fixed;
-    bottom: 0;
-    left: 0;
+    top: 12px;
+    left: 10px;
 }
 
-.actions > #brush{
-    display: none;
+.actions svg{
+    height: 1.5em;
+    width: 1.5em;
+    padding: 8px;
+    transition: all 0.3s;
 }
 
-.actions.x > #brush{
-    display: inline-block;
+.actions svg.active{
+    fill:blue;
+    transform: scale(1.2);
 }
 
-.actions.x > #eraser{
-    display:none;
+.colors{
+    list-style: none;
+    position: fixed;
+    top:50px;
+    left:18px;
+}
+
+.colors >li {
+    width: 20px;
+    height: 20px;
+    margin: 10px 0;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0 , 0 , 0 , 0.25);
+    cursor:pointer;
+    transition: all 0.3s;
+}
+
+.colors > li.red{
+    background-color: red;
+}
+
+.colors > li.blue{
+    background-color: blue;
+}
+
+.colors > li.black{
+    background-color: black;
+}
+
+.colors > li.green{
+    background-color: green;
+}
+
+.colors >li.active{
+    box-shadow: 2px 1px 5px rgba(0 , 0 , 0 , 0.9);
+    transform: scale(1.2);
 }

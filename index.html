@@ -6,13 +6,32 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>我 的 画 板</title>
     <link rel="stylesheet" href="./css/paint.css">
+    <style type="text/css">
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 <canvas id="canvas" width=500 height=500></canvas>
 <div id="actions" class="actions">
-    <button id="eraser">橡皮擦</button>
-    <button id="brush">画笔</button>
+    <svg id="pen" class="icon active" aria-hidden="true">
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id="eraser" class="icon" aria-hidden="true">
+        <use xlink:href="#icon-eraser"></use>
+    </svg>
 </div>
+<ul class="colors">
+    <li id="black" class="black active"></li>
+    <li id="red" class="red"></li>
+    <li id="blue" class="blue"></li>
+    <li id="green" class="green"></li>
+</ul>
 <script src="./js/main.js"></script>
+<script src="//at.alicdn.com/t/font_624977_6si4tdiz7tvmfgvi.js"></script>
 </body>
 </html>
